@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<h2>Login</h2>
+<form id="loginForm">
+    <label>Username:</label>
+    <input type="text" name="username" required><br>
+    <label>Password:</label>
+    <input type="password" name="password" required><br>
+    <button type="submit">Login</button>
+</form>
+
+<p id="responseMsg"></p>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const data = {
+        username: formData.get("username"),
+        password: formData.get("password")
+    };
+
+    try {
+        const res = await fetch("/api/auth/login/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+            // Save access token in localStorage
+            localStorage.setItem("access_token", result.access);
+            document.getElementById("responseMsg").innerText = "✅ Login successful!";
+            // Redirect to dashboard page
+            window.location.href = "/dashboard-ui/";
+        } else {
+            document.getElementById("responseMsg").innerText = "❌ " + (result.detail || "Login failed");
+        }
+    } catch (err) {
+        document.getElementById("responseMsg").innerText = "⚠️ Error: " + err.message;
+    }
+});
+</script>
+{% endblock %}

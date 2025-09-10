@@ -1,0 +1,64 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.pyd
+*.pdb
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv/
+
+# Django
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+*.sqlite3-journal
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Byte-compiled / cache
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Pytest / Coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# IDEs
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node / frontend build (if any)
+node_modules/
+dist/
+build/
+
+# Environments
+.env
+.env.*
