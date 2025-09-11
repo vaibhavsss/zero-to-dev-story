@@ -1,5 +1,11 @@
 from django.urls import path
-from .views import RegisterView, DashboardAPIView, UserListView
+from .views import (
+    RegisterView,
+    DashboardAPIView,
+    UserListView,
+    UserProfileAPIView,
+    LogoutAPIView
+)
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
@@ -11,4 +17,6 @@ urlpatterns = [
     # Protected APIs
     path('dashboard/', DashboardAPIView.as_view(), name='api_dashboard'),
     path('users/', UserListView.as_view(), name='api_users'),
+    path('profile/', UserProfileAPIView.as_view(), name='api_profile'),
+    path('logout/', LogoutAPIView.as_view(), name='api_logout'),
 ]
